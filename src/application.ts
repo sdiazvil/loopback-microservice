@@ -9,6 +9,7 @@ import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {MySequence} from './sequence';
+import {CrudRestComponent} from '@loopback/rest-crud';
 
 export {ApplicationConfig};
 
@@ -40,5 +41,6 @@ export class LoopbackMicroserviceApplication extends BootMixin(
         nested: true,
       },
     };
+    this.component(CrudRestComponent);
   }
 }
