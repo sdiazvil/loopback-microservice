@@ -35,7 +35,7 @@
     "start": "node -r source-map-support/register .",
     "clean": "lb-clean dist *.tsbuildinfo .eslintcache",
     "rebuild": "npm run clean && npm run build",
-    "dev": "nodemon server/server.js --watch common --watch server"
+    "dev": "nodemon index.ts"
   },
   "repository": {
     "type": "git",
