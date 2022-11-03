@@ -1,15 +1,18 @@
+import {AuthenticationComponent} from '@loopback/authentication';
+import {JWTAuthenticationComponent, UserServiceBindings} from '@loopback/authentication-jwt';
 import {BootMixin} from '@loopback/boot';
 import {ApplicationConfig} from '@loopback/core';
-import {
-  RestExplorerBindings,
-  RestExplorerComponent,
-} from '@loopback/rest-explorer';
 import {RepositoryMixin} from '@loopback/repository';
 import {RestApplication} from '@loopback/rest';
+import {CrudRestComponent} from '@loopback/rest-crud';
+import {
+  RestExplorerBindings,
+  RestExplorerComponent
+} from '@loopback/rest-explorer';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
+import {DbDataSource} from './datasources/db.datasource';
 import {MySequence} from './sequence';
-import {CrudRestComponent} from '@loopback/rest-crud';
 
 export {ApplicationConfig};
 
@@ -42,5 +45,15 @@ export class LoopbackMicroserviceApplication extends BootMixin(
       },
     };
     this.component(CrudRestComponent);
+
+    //...
+    // ------ ADD SNIPPET AT THE BOTTOM ---------
+    // Mount authentication system
+    this.component(AuthenticationComponent);
+    // Mount jwt component
+    this.component(JWTAuthenticationComponent);
+    // Bind datasource
+    this.dataSource(DbDataSource, UserServiceBindings.DATASOURCE_NAME);
+    // ------------- END OF SNIPPET -------------
   }
 }
