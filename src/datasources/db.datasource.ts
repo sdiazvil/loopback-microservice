@@ -1,6 +1,8 @@
 import {inject, lifeCycleObserver, LifeCycleObserver} from '@loopback/core';
 import {juggler} from '@loopback/repository';
 
+require('dotenv').config()
+
 const config = {
   name: 'db',
   connector: 'postgresql',

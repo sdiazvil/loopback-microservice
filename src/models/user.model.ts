@@ -12,6 +12,9 @@ export class NewUserRequest extends User {
   @property({
     type: 'string',
     required: true,
+    jsonSchema: {
+      minLength: 8
+    }
   })
   password: string;
 }
