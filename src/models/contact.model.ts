@@ -6,7 +6,8 @@ import {Entity, model, property} from '@loopback/repository';
       table: 'contacts'
     }, strict: true
   }
-}) export class Contact extends Entity {
+})
+export class Contact extends Entity {
   @property({
     type: 'number',
     id: true,
